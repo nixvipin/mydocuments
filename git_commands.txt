@@ -1,0 +1,23 @@
+git pull
+git add .
+git commit -m “comment”
+git push
+git fetch
+git merge
+
+===================
+
+git verify-pack -v .git/objects/pack/pack-7b03cc896f31b2441f3a791ef760bd28495697e6.idx \
+| sort -k 3 -n \
+| tail -10
+
+git filter-branch --index-filter 'git rm --cached --ignore-unmatch *.mov' -- --all
+rm -Rf .git/refs/original
+rm -Rf .git/logs/
+git gc --aggressive --prune=now
+
+git count-objects -v
+
+
+
+
